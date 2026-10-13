@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ============================================================
+  CUSTOMISE HERE (1 of 3): page title, description, share tags
+  Replace every [BRACKET] with your real details.
+============================================================ -->
+<title>Lumière Salon Website (clean copy)</title>
+<meta name="description" content="[SALON NAME] in [CITY]: cuts, colour, braids, nails, makeup and facials. Book your appointment online.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="[SALON NAME] | [CITY]">
+<meta property="og:description" content="[One sentence about your salon.]">
+<meta property="og:image" content="[FULL URL TO A SHARE IMAGE]">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%82%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Local business markup for Google. Update the values below. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "[SALON NAME]",
+  "telephone": "[NUMBER]",
+  "email": "[EMAIL]",
+  "address": { "@type": "PostalAddress", "streetAddress": "[STREET]", "addressLocality": "[CITY]", "addressCountry": "ZA" },
+  "openingHours": ["Mo-Fr 08:00-18:00", "Sa 08:00-16:00"]
+}
+</script>
+
+<style>
+/* ============================================================
+  CUSTOMISE HERE (2 of 3): colours. Change these variables only.
+============================================================ */
+:root{
+  --rose:#a8584f;      /* buttons and accents */
+  --gold:#8a6a2f;      /* small headings */
+  --ink:#2a2523;       /* main text and dark sections */
+  --cream:#fffaf7;     /* page background */
+  --blush:#f6e6e1;     /* soft section background */
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;font-family:'Jost',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.1;margin:0}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:1160px;margin:0 auto;padding:0 clamp(16px,5vw,40px)}
+.s{padding:clamp(56px,9vw,100px) 0}
+.eyebrow{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.h2{font-size:clamp(32px,5vw,52px)}
+.center{text-align:center}
+.btn{font:inherit;display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 26px;border-radius:999px;background:var(--rose);color:#fff;font-weight:500;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.btn.o{background:transparent;border:1.5px solid currentColor;color:inherit}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.card{background:#fff;border-radius:20px;padding:28px;box-shadow:0 4px 24px rgba(42,37,35,.07);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(42,37,35,.12)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* navbar */
+header{position:sticky;top:0;z-index:50;background:rgba(255,250,247,.94);border-bottom:1px solid #eadfda;transition:box-shadow .25s}
+header.scrolled{box-shadow:0 6px 24px rgba(42,37,35,.1)}
+.bar{display:flex;align-items:center;justify-content:space-between;min-height:68px;gap:12px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700}
+.nl{padding:10px 12px;font-size:15px;border-radius:8px}
+.nl:hover,.nl.act{color:var(--rose)}
+.dk{display:none;align-items:center}
+.burger{display:flex;width:46px;height:46px;align-items:center;justify-content:center;background:none;border:0;color:var(--ink);cursor:pointer}
+#mmenu{display:none;flex-direction:column;padding-bottom:16px}
+#mmenu.open{display:flex}
+#mmenu .nl{padding:14px 12px}
+@media(min-width:1040px){.dk{display:flex}.burger,#mmenu,#mmenu.open{display:none}}
+
+/* hero */
+.hero{background:linear-gradient(135deg,#f6e6e1 0%,#fffaf7 55%,#efe0c8 100%)}
+.hero .wrap{display:flex;flex-direction:column;gap:22px;max-width:860px;text-align:center;align-items:center;padding-top:clamp(64px,12vw,140px);padding-bottom:clamp(64px,12vw,140px)}
+.hero h1{font-size:clamp(44px,9vw,92px)}
+.hero .sub{font-size:clamp(16px,2.4vw,20px);max-width:560px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+/* sections */
+.about{display:flex;flex-wrap:wrap;gap:40px;align-items:center}
+.about>div:first-child{flex:1 1 320px;display:flex;flex-direction:column;gap:16px}
+.stats{flex:1 1 320px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.stat{text-align:center}
+.stat h3{font-size:44px;color:var(--rose)}
+.blush{background:var(--blush)}
+.stack{display:flex;flex-direction:column;gap:32px}
+.card h3{font-size:28px;margin:12px 0 6px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed #e3d8d3}
+.offer{background:var(--ink);color:#fff;text-align:center;padding:48px 0}
+.offer .wrap{display:flex;flex-direction:column;gap:14px;align-items:center}
+.offer h2{font-size:clamp(30px,5vw,48px)}
+.chip{font:inherit;min-height:44px;padding:0 20px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.chip.on{background:var(--ink);color:#fff}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.gal{grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr))}
+.tile{border:0;font:inherit;border-radius:18px;aspect-ratio:1/1;display:flex;align-items:flex-end;padding:16px;font-weight:500;color:#fff;cursor:pointer;transition:transform .25s}
+.tile:hover{transform:scale(1.03)}
+.tile[hidden]{display:none}
+.g0{background:linear-gradient(135deg,#a8584f,#e8b9a8)}
+.g1{background:linear-gradient(135deg,#8a6a2f,#e6cf9f)}
+.g2{background:linear-gradient(135deg,#6b4a5c,#d9a9c0)}
+.g3{background:linear-gradient(135deg,#2a2523,#8c7a72)}
+.team{text-align:center}
+.avatar{width:110px;height:110px;border-radius:50%;margin:0 auto 14px;background:linear-gradient(135deg,var(--rose),#efe0c8)}
+.team .role{color:var(--gold);font-weight:500}
+
+/* form */
+.formcard{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.fgrid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.lbl{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:500}
+.in{font:inherit;width:100%;min-height:46px;padding:10px 14px;border:1.5px solid #d9cfca;border-radius:12px;background:#fff;color:var(--ink)}
+.in.bad{border-color:#b3261e}
+.er{color:#b3261e;font-size:13px;min-height:1em}
+#ok{display:none;text-align:center;flex-direction:column;gap:14px;align-items:center}
+
+/* reviews */
+.rev{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:22px;align-items:center;text-align:center}
+.slide{display:none;width:100%}
+.slide.on{display:block}
+.stars{color:var(--gold);letter-spacing:4px}
+.slide p.q{font-size:20px;margin:10px 0}
+
+/* faq */
+.faqs{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq{width:100%;text-align:left;font:inherit;font-weight:500;font-size:17px;min-height:56px;padding:14px 20px;background:#fff;border:0;border-radius:14px;cursor:pointer;display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--ink)}
+.ans{padding:4px 20px 12px;display:none}
+.ans.open{display:block}
+
+/* contact + footer */
+.contact{background:var(--ink);color:#fff}
+.contact .cols{display:flex;flex-wrap:wrap;gap:40px}
+.contact .cols>div{flex:1 1 300px}
+.info{display:flex;flex-direction:column;gap:10px}
+.map{min-height:260px;border-radius:20px;background:#3a3330;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
+footer{background:#1c1816;color:#e9dfda;padding:32px 0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+
+/* floating buttons */
+.wa,.top{position:fixed;right:16px;z-index:60;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.wa{bottom:16px;background:#1d7a46}
+.top{bottom:84px;background:var(--ink);border:0;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s}
+.top.show{opacity:1;pointer-events:auto}
+
+/* lightbox */
+#lb{position:fixed;inset:0;z-index:100;background:rgba(20,16,15,.88);display:none;align-items:center;justify-content:center;padding:20px}
+#lb.open{display:flex}
+#lbimg{width:min(92vw,640px);aspect-ratio:1/1;border-radius:20px;display:flex;align-items:flex-end;padding:20px;color:#fff;font-size:20px;font-weight:500}
+#lbx{position:absolute;top:14px;right:14px;width:48px;height:48px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-size:24px;cursor:pointer}
+
+/* gentle reveal, one effect only */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.card,.btn,.tile{transition:none}}
+</style>
+</head>
+<body id="top">
+
+<!-- NAVBAR -->
+<header id="hdr">
+  <div class="wrap bar">
+    <a class="logo" href="#top">[SALON NAME]</a>
+    <nav class="dk" aria-label="Main">
+      <a class="nl" href="#about">About</a><a class="nl" href="#services">Services</a><a class="nl" href="#pricing">Pricing</a><a class="nl" href="#gallery">Gallery</a><a class="nl" href="#team">Team</a><a class="nl" href="#reviews">Reviews</a><a class="nl" href="#contact">Contact</a>
+      <a class="btn" href="#book" style="margin-left:12px">Book Now</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <nav class="wrap" id="mmenu" aria-label="Mobile">
+    <a class="nl" href="#about">About</a><a class="nl" href="#services">Services</a><a class="nl" href="#pricing">Pricing</a><a class="nl" href="#gallery">Gallery</a><a class="nl" href="#team">Team</a><a class="nl" href="#contact">Contact</a>
+    <a class="btn" href="#book" style="margin-top:8px">Book Now</a>
+  </nav>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">[TYPE: HAIR / BEAUTY SALON] · [CITY]</p>
+    <h1>[TAGLINE: Where beauty meets confidence]</h1>
+    <p class="sub">[One or two sentences about what makes your salon special.]</p>
+    <div class="btns"><a class="btn" href="#book">Book Appointment</a><a class="btn o" href="#services">View Services</a></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="s rv"><div class="wrap">
+  <div class="about">
+    <div>
+      <p class="eyebrow">About us</p>
+      <h2 class="h2">Our story</h2>
+      <p>[Tell your salon story here: who you are, why you started, and what clients can expect when they walk in.]</p>
+      <p>[Add your mission or values here.]</p>
+    </div>
+    <div class="grid stats">
+      <div class="card stat"><h3>[00]+</h3><p>Happy clients</p></div>
+      <div class="card stat"><h3>[00]</h3><p>Stylists</p></div>
+      <div class="card stat"><h3>[00]</h3><p>Years of experience</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- SERVICES -->
+<section id="services" class="s blush rv"><div class="wrap stack">
+  <div class="center"><p class="eyebrow">What we do</p><h2 class="h2">Our services</h2></div>
+  <div class="grid">
+    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg><h3>Cuts &amp; styling</h3><p>[Short description of your cuts and styling.]</p></div>
+    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 3c3 4 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 3-6 6-10z"/></svg><h3>Colour</h3><p>[Short description of your colour services.]</p></div>
+    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 4c4 4 10 4 14 0M5 12c4 4 10 4 14 0M5 20c4-4 10-4 14 0"/></svg><h3>Braids &amp; treatments</h3><p>[Short description of braiding and hair treatments.]</p></div>
+    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 21V11l3-8 3 8v10z"/></svg><h3>Nails</h3><p>[Short description of your nail services.]</p></div>
+    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 3l2.5 6 6.5.5-5 4.3 1.6 6.4L12 16.5 6.4 20.2 8 13.8 3 9.5 9.5 9z"/></svg><h3>Makeup</h3><p>[Short description of makeup and bridal makeup.]</p></div>
+    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14c1 2 7 2 8 0M9 9h.01M15 9h.01"/></svg><h3>Facials</h3><p>[Short description of facials and skincare.]</p></div>
+  </div>
+</div></section>
+
+<!-- PRICING -->
+<section id="pricing" class="s rv"><div class="wrap stack">
+  <div class="center"><p class="eyebrow">Price list</p><h2 class="h2">Pricing</h2></div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+    <div class="card"><h3 style="margin-top:0">Hair</h3>
+      <div class="row"><span>[Service name]</span><strong>R [PRICE]</strong></div>
+      <div class="row"><span>[Service name]</span><strong>R [PRICE]</strong></div>
+      <div class="row"><span>[Service name]</span><strong>R [PRICE]</strong></div></div>
+    <div class="card"><h3 style="margin-top:0">Nails</h3>
+      <div class="row"><span>[Service name]</span><strong>R [PRICE]</strong></div>
+      <div class="row"><span>[Service name]</span><strong>R [PRICE]</strong></div>
+      <div class="row"><span>[Service name]</span><strong>R [PRICE]</strong></div></div>
+    <div class="card"><h3 style="margin-top:0">Makeup &amp; facials</h3>
+      <div class="row"><span>[Service name]</span><strong>R [PRICE]</strong></div>
+      <div class="row"><span>[Service name]</span><strong>R [PRICE]</strong></div>
+      <div class="row"><span>[Service name]</span><strong>R [PRICE]</strong></div></div>
+  </div>
+</div></section>
+
+<!-- SPECIAL OFFER -->
+<section class="offer"><div class="wrap">
+  <h2>[OFFER: 20% off your first visit]</h2>
+  <p>[Offer terms, e.g. valid until [DATE]. Mention this banner when booking.]</p>
+  <a class="btn" href="#book">Claim offer</a>
+</div></section>
+
+<!-- GALLERY (swap the coloured tiles for photos: see the how-to at the bottom of this file) -->
+<section id="gallery" class="s rv"><div class="wrap stack">
+  <div class="center"><p class="eyebrow">Our work</p><h2 class="h2">Gallery</h2></div>
+  <div class="tabs" id="tabs">
+    <button class="chip on" data-f="All">All</button><button class="chip" data-f="Hair">Hair</button><button class="chip" data-f="Nails">Nails</button><button class="chip" data-f="Makeup">Makeup</button><button class="chip" data-f="Bridal">Bridal</button>
+  </div>
+  <div class="grid gal" id="gal">
+    <button class="tile g0" data-c="Hair">Hair</button>
+    <button class="tile g1" data-c="Nails">Nails</button>
+    <button class="tile g2" data-c="Bridal">Bridal</button>
+    <button class="tile g3" data-c="Makeup">Makeup</button>
+    <button class="tile g2" data-c="Hair">Hair</button>
+    <button class="tile g3" data-c="Nails">Nails</button>
+    <button class="tile g0" data-c="Bridal">Bridal</button>
+    <button class="tile g1" data-c="Makeup">Makeup</button>
+  </div>
+</div></section>
+
+<!-- TEAM -->
+<section id="team" class="s blush rv"><div class="wrap stack">
+  <div class="center"><p class="eyebrow">The people</p><h2 class="h2">Meet the team</h2></div>
+  <div class="grid">
+    <div class="card team"><div class="avatar" role="img" aria-label="Photo placeholder for stylist"></div><h3 style="margin-top:0">[Stylist name]</h3><p class="role">[Speciality]</p><p style="font-size:14px;margin-top:6px"><a href="[INSTAGRAM LINK]">Instagram</a></p></div>
+    <div class="card team"><div class="avatar" role="img" aria-label="Photo placeholder for stylist"></div><h3 style="margin-top:0">[Stylist name]</h3><p class="role">[Speciality]</p><p style="font-size:14px;margin-top:6px"><a href="[INSTAGRAM LINK]">Instagram</a></p></div>
+    <div class="card team"><div class="avatar" role="img" aria-label="Photo placeholder for stylist"></div><h3 style="margin-top:0">[Stylist name]</h3><p class="role">[Speciality]</p><p style="font-size:14px;margin-top:6px"><a href="[INSTAGRAM LINK]">Instagram</a></p></div>
+  </div>
+</div></section>
+
+<!-- BOOKING -->
+<section id="book" class="s rv"><div class="wrap stack">
+  <div class="center"><p class="eyebrow">Reserve your spot</p><h2 class="h2">Book an appointment</h2></div>
+  <div class="card formcard" id="ok" role="status">
+    <h3 style="font-size:32px;margin:0">Request received</h3>
+    <p>Thank you! We will confirm your booking shortly. You can also send it straight to WhatsApp.</p>
+    <a class="btn" id="waSend" href="#">Send on WhatsApp</a>
+  </div>
+  <form class="card formcard" id="form" novalidate>
+    <div class="fgrid">
+      <label class="lbl">Full name<input class="in" id="f-name" type="text" autocomplete="name"><span class="er" id="e-name" aria-live="polite"></span></label>
+      <label class="lbl">Phone / WhatsApp<input class="in" id="f-phone" type="tel" autocomplete="tel"><span class="er" id="e-phone" aria-live="polite"></span></label>
+      <label class="lbl">Email (optional)<input class="in" id="f-email" type="email" autocomplete="email"><span class="er" id="e-email" aria-live="polite"></span></label>
+      <label class="lbl">Service<select class="in" id="f-service"><option value="">Choose a service</option><option>Cuts and styling</option><option>Colour</option><option>Braids and treatments</option><option>Nails</option><option>Makeup</option><option>Facials</option></select><span class="er" id="e-service" aria-live="polite"></span></label>
+      <label class="lbl">Stylist<select class="in" id="f-stylist"><option value="">No preference</option><option>[Stylist 1]</option><option>[Stylist 2]</option><option>[Stylist 3]</option></select></label>
+      <label class="lbl">Date<input class="in" id="f-date" type="date"><span class="er" id="e-date" aria-live="polite"></span></label>
+      <label class="lbl">Time<input class="in" id="f-time" type="time"></label>
+    </div>
+    <label class="lbl">Notes<textarea class="in" id="f-notes" rows="3"></textarea></label>
+    <div class="btns" style="justify-content:flex-start">
+      <button class="btn" type="submit">Request booking</button>
+      <a class="btn o" id="waBook" href="#">Book via WhatsApp</a>
+    </div>
+  </form>
+</div></section>
+
+<!-- TESTIMONIALS -->
+<section id="reviews" class="s blush rv"><div class="wrap rev">
+  <p class="eyebrow">Kind words</p><h2 class="h2">What clients say</h2>
+  <div style="width:100%" id="slides">
+    <div class="card slide on"><p class="stars" aria-label="5 out of 5 stars">★★★★★</p><p class="q">[Add a real client review here.]</p><strong>[Client name]</strong></div>
+    <div class="card slide"><p class="stars" aria-label="5 out of 5 stars">★★★★★</p><p class="q">[Add a second client review here.]</p><strong>[Client name]</strong></div>
+    <div class="card slide"><p class="stars" aria-label="5 out of 5 stars">★★★★★</p><p class="q">[Add a third client review here.]</p><strong>[Client name]</strong></div>
+  </div>
+  <div class="btns"><button class="chip" id="prev" aria-label="Previous review">Previous</button><button class="chip" id="next" aria-label="Next review">Next</button></div>
+</div></section>
+
+<!-- FAQ -->
+<section id="faq" class="s rv"><div class="wrap">
+  <div class="center" style="margin-bottom:24px"><p class="eyebrow">Good to know</p><h2 class="h2">FAQ</h2></div>
+  <div class="faqs" id="faqs">
+    <div><button class="faq" aria-expanded="false">How do I cancel or reschedule?<span aria-hidden="true">+</span></button><p class="ans">[Your cancellation policy.]</p></div>
+    <div><button class="faq" aria-expanded="false">Do you take a deposit?<span aria-hidden="true">+</span></button><p class="ans">[Your deposit policy.]</p></div>
+    <div><button class="faq" aria-expanded="false">Which products do you use?<span aria-hidden="true">+</span></button><p class="ans">[The brands and products you use.]</p></div>
+  </div>
+</div></section>
+
+<!-- CONTACT -->
+<section id="contact" class="s contact"><div class="wrap">
+  <div class="cols">
+    <div class="info">
+      <h2 class="h2">Visit us</h2>
+      <p>[ADDRESS], [CITY]</p>
+      <p>Phone / WhatsApp: [NUMBER]</p>
+      <p>Email: [EMAIL]</p>
+      <p style="margin-top:8px"><strong>Opening hours</strong></p>
+      <p>[Mon–Fri 08:00–18:00]<br>[Sat 08:00–16:00]<br>[Sun closed]</p>
+    </div>
+    <div class="map" role="img" aria-label="Map placeholder">[Paste your Google Maps embed (iframe) here]</div>
+  </div>
+</div></section>
+</main>
+
+<!-- FOOTER -->
+<footer><div class="wrap">
+  <p>© [YEAR] [SALON NAME]. All rights reserved.</p>
+  <p><a href="[INSTAGRAM LINK]">Instagram</a> · <a href="[FACEBOOK LINK]">Facebook</a> · <a href="[TIKTOK LINK]">TikTok</a></p>
+  <a href="#top" style="text-decoration:underline">Back to top</a>
+</div></footer>
+
+<!-- FLOATING BUTTONS -->
+<button class="top" id="toTop" aria-label="Back to top"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<a class="wa" id="waFloat" href="#" aria-label="Chat on WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/></svg></a>
+
+<!-- LIGHTBOX -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Gallery image"><button id="lbx" aria-label="Close">×</button><div id="lbimg"></div></div>
+
+<script>
+/* ============================================================
+  CUSTOMISE HERE (3 of 3): your WhatsApp number.
+  Digits only, with country code and no + or spaces. Example for South Africa: 27821234567
+============================================================ */
+var WHATSAPP = "27000000000";
+
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  /* Mobile menu */
+  var burger = $('#burger'), mmenu = $('#mmenu');
+  function setMenu(o) { mmenu.classList.toggle('open', o); burger.setAttribute('aria-expanded', o); }
+  burger.addEventListener('click', function () { setMenu(!mmenu.classList.contains('open')); });
+  $$('#mmenu a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+
+  /* Header shadow, back-to-top button */
+  var hdr = $('#hdr'), toTop = $('#toTop');
+  function onScroll() { var y = window.scrollY; hdr.classList.toggle('scrolled', y > 10); toTop.classList.toggle('show', y > 600); }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  toTop.addEventListener('click', function () { window.scrollTo({ top: 0 }); });
+
+  /* Active nav link + reveal on scroll */
+  if ('IntersectionObserver' in window) {
+    var links = $$('.dk .nl');
+    var spy = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) links.forEach(function (l) { l.classList.toggle('act', l.getAttribute('href') === '#' + e.target.id); }); });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    $$('main section[id]').forEach(function (s) { spy.observe(s); });
+    var rv = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); rv.unobserve(e.target); } }); }, { threshold: 0.08 });
+    $$('.rv').forEach(function (el) { rv.observe(el); });
+  } else { $$('.rv').forEach(function (el) { el.classList.add('in'); }); }
+
+  /* Gallery filter + lightbox */
+  var tiles = $$('#gal .tile');
+  $$('#tabs .chip').forEach(function (b) {
+    b.addEventListener('click', function () {
+      $$('#tabs .chip').forEach(function (x) { x.classList.toggle('on', x === b); });
+      tiles.forEach(function (t) { t.hidden = !(b.dataset.f === 'All' || t.dataset.c === b.dataset.f); });
+    });
+  });
+  var lb = $('#lb'), lbimg = $('#lbimg'), last;
+  tiles.forEach(function (t) {
+    t.addEventListener('click', function () {
+      last = t; lbimg.className = t.className.replace('tile', '').trim(); lbimg.textContent = t.textContent;
+      lb.classList.add('open'); $('#lbx').focus();
+    });
+  });
+  function closeLb() { lb.classList.remove('open'); if (last) last.focus(); }
+  $('#lbx').addEventListener('click', closeLb);
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('open')) closeLb(); });
+
+  /* Testimonial slider */
+  var slides = $$('#slides .slide'), n = 0;
+  function show(i) { n = (i + slides.length) % slides.length; slides.forEach(function (s, k) { s.classList.toggle('on', k === n); }); }
+  $('#prev').addEventListener('click', function () { show(n - 1); });
+  $('#next').addEventListener('click', function () { show(n + 1); });
+  setInterval(function () { if (!document.hidden && !document.activeElement.closest('.rev')) show(n + 1); }, 7000);
+
+  /* FAQ accordion */
+  $$('#faqs .faq').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var open = b.getAttribute('aria-expanded') === 'true';
+      $$('#faqs .faq').forEach(function (x) { x.setAttribute('aria-expanded', 'false'); x.nextElementSibling.classList.remove('open'); });
+      if (!open) { b.setAttribute('aria-expanded', 'true'); b.nextElementSibling.classList.add('open'); }
+    });
+  });
+
+  /* Booking form: no past dates, validation, WhatsApp */
+  var d = new Date(), pad = function (x) { return (x < 10 ? '0' : '') + x; };
+  var today = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  $('#f-date').min = today;
+  var v = function (id) { return $('#f-' + id).value.trim(); };
+  function waLink() {
+    var m = 'Hi, I would like to book ' + (v('service') || 'an appointment') + (v('date') ? ' on ' + v('date') : '') + (v('time') ? ' at ' + v('time') : '') + (v('stylist') ? ' with ' + v('stylist') : '') + (v('name') ? '. Name: ' + v('name') : '') + (v('notes') ? '. Notes: ' + v('notes') : '');
+    return 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(m);
+  }
+  function refreshWa() { ['#waBook', '#waSend', '#waFloat'].forEach(function (s) { $(s).href = waLink(); }); }
+  $('#form').addEventListener('input', refreshWa); $('#form').addEventListener('change', refreshWa); refreshWa();
+  function setErr(id, msg) { $('#e-' + id).textContent = msg; var f = $('#f-' + id); f.classList.toggle('bad', !!msg); f.setAttribute('aria-invalid', !!msg); return !msg; }
+  $('#form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = [
+      setErr('name', v('name') ? '' : 'Please enter your name.'),
+      setErr('phone', /^\+?[\d\s-]{9,}$/.test(v('phone')) ? '' : 'Enter a valid phone number.'),
+      setErr('email', !v('email') || /^\S+@\S+\.\S+$/.test(v('email')) ? '' : 'Enter a valid email.'),
+      setErr('service', v('service') ? '' : 'Choose a service.'),
+      setErr('date', !v('date') ? 'Pick a date.' : (v('date') < today ? 'Date cannot be in the past.' : ''))
+    ];
+    if (ok.indexOf(false) > -1) { var first = $('.bad'); if (first) first.focus(); return; }
+    refreshWa(); $('#form').style.display = 'none'; $('#ok').style.display = 'flex'; $('#ok').scrollIntoView({ block: 'center' });
+    /* To receive bookings by email, connect this form to a free service such as Formspree or Netlify Forms. */
+  });
+})();
+</script>
+
+<!--
+HOW TO CUSTOMISE
+1. Search this file for [ and replace each [BRACKET] with your real details (name, address, prices, reviews, links).
+2. Colours: edit the five variables at the top of the <style> block.
+3. WhatsApp number: edit WHATSAPP in the script near the bottom.
+4. Real photos: put your images in the same folder (for example gallery-1.jpg), then replace a gallery tile such as
+   <button class="tile g0" data-c="Hair">Hair</button> with
+   <button class="tile" data-c="Hair" style="background:url('gallery-1.jpg') center/cover">Hair</button>
+5. Google Map: replace the map placeholder text with the iframe from Google Maps > Share > Embed a map.
+HOW TO PUBLISH FREE
+Netlify: go to app.netlify.com/drop and drag the folder containing index.html onto the page.
+GitHub Pages: create a repository, upload index.html, then Settings > Pages > deploy from the main branch.
+-->
+</body>
+</html>
