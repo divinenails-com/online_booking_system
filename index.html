@@ -291,7 +291,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
       <label class="lbl">Phone / WhatsApp<input class="in" id="f-phone" type="tel" autocomplete="tel"><span class="er" id="e-phone" aria-live="polite"></span></label>
       <label class="lbl">Email (optional)<input class="in" id="f-email" type="email" autocomplete="email"><span class="er" id="e-email" aria-live="polite"></span></label>
       <label class="lbl">Service<select class="in" id="f-service"><option value="">Choose a service</option><!--<option>Cuts and styling</option>--><!--<option>Colour</option>--><option>Eye Lashes</option><option>Nails</option><!--<option>Makeup</option><option>Facials</option>--></select><span class="er" id="e-service" aria-live="polite"></span></label>
-      <!--<label class="lbl">Stylist<select class="in" id="f-stylist"><option value="">No preference</option><option>[Stylist 1]</option><option>[Stylist 2]</option><option>[Stylist 3]</option></select></label>-->
+      <label class="lbl">Stylist<select class="in" id="f-stylist"><option value="">No preference</option><option>Lehlogonolo</option><option>Lesedi</option><option>Karabo</option></select></label>-->
       <label class="lbl">Date<input class="in" id="f-date" type="date"><span class="er" id="e-date" aria-live="polite"></span></label>
       <label class="lbl">Time<input class="in" id="f-time" type="time"></label>
     </div>
@@ -430,7 +430,7 @@ var WHATSAPP = "27710648238";
   $('#f-date').min = today;
   var v = function (id) { return $('#f-' + id).value.trim(); };
   function waLink() {
-    var m = 'Hi, I would like to book ' + (v('service') || 'an appointment') + (v('date') ? ' on ' + v('date') : '') + (v('time') ? ' at ' + v('time') : '') + <!--(v('stylist') ? ' with ' + v('stylist') : '')--> + (v('name') ? '. Name: ' + v('name') : '') + (v('notes') ? '. Notes: ' + v('notes') : '');
+    var m = 'Hi, I would like to book ' + (v('service') || 'an appointment') + (v('date') ? ' on ' + v('date') : '') + (v('time') ? ' at ' + v('time') : '') + (v('stylist') ? ' with ' + v('stylist') : '') + (v('name') ? '. Name: ' + v('name') : '') + (v('notes') ? '. Notes: ' + v('notes') : '');
     return 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(m);
   }
   function refreshWa() { ['#waBook', '#waSend', '#waFloat'].forEach(function (s) { $(s).href = waLink(); }); }
