@@ -3,44 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- ============================================================
-  CUSTOMISE HERE (1 of 3): page title, description, share tags
-  Replace every [BRACKET] with your real details.
-============================================================ -->
-<title>Divine Nail Salon</title>
+<title>Divine Nails | Professional Nail Salon in Mankweng, Polokwane</title>
 <meta name="description" content="Divine Nails in Mankweng: Book your appointment online.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Divine Nails | Professional Nail Salon in Mankweng, Polokwane">
 <meta property="og:description" content="Divine Nails offers professional, hygienic, and stylish nail care in Mankweng, Polokwane — where every visit leaves you feeling polished and confident.">
-<meta property="og:image" content="https://pin.it/12NWEsDwe">
+<!-- Replace the URL below with your real GitHub Pages address, e.g. https://YOUR-USERNAME.github.io/YOUR-REPO/divine-nails-cover.png -->
+<meta property="og:image" content="https://YOUR-USERNAME.github.io/YOUR-REPO/divine-nails-cover.png">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500&display=swap" rel="stylesheet">
 
-<!-- Local business markup for Google. Update the values below. -->
+<!-- Local business markup for Google -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "HairSalon",
+  "@type": "NailSalon",
   "name": "Divine Nails",
   "telephone": "+27 71 064 8238",
   "email": "Mr.Sekgobelaa@gmail.com",
   "address": { "@type": "PostalAddress", "streetAddress": "Mankweng Stand 401 Unit E", "addressLocality": "Polokwane", "addressCountry": "ZA" },
-  "openingHours": ["Mo-Fr 08:00-17:00", "Sat 08:00-15:00"]
+  "openingHours": ["Mo-Fr 09:00-17:00", "Sat 09:00-15:00"]
 }
 </script>
 
 <style>
-/* ============================================================
-  CUSTOMISE HERE (2 of 3): colours. Change these variables only.
-============================================================ */
 :root{
-  --rose:#a8584f;      /* buttons and accents */
-  --gold:#8a6a2f;      /* small headings */
-  --ink:#2a2523;       /* main text and dark sections */
-  --cream:#fffaf7;     /* page background */
-  --blush:#f6e6e1;     /* soft section background */
+  --rose:#a8584f;
+  --gold:#8a6a2f;
+  --ink:#2a2523;
+  --cream:#fffaf7;
+  --blush:#f6e6e1;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:76px}
@@ -62,7 +56,6 @@ img{max-width:100%}
 .card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(42,37,35,.12)}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 
-/* navbar */
 header{position:sticky;top:0;z-index:50;background:rgba(255,250,247,.94);border-bottom:1px solid #eadfda;transition:box-shadow .25s}
 header.scrolled{box-shadow:0 6px 24px rgba(42,37,35,.1)}
 .bar{display:flex;align-items:center;justify-content:space-between;min-height:68px;gap:12px}
@@ -76,14 +69,12 @@ header.scrolled{box-shadow:0 6px 24px rgba(42,37,35,.1)}
 #mmenu .nl{padding:14px 12px}
 @media(min-width:1040px){.dk{display:flex}.burger,#mmenu,#mmenu.open{display:none}}
 
-/* hero */
 .hero{background:linear-gradient(135deg,#f6e6e1 0%,#fffaf7 55%,#efe0c8 100%)}
 .hero .wrap{display:flex;flex-direction:column;gap:22px;max-width:860px;text-align:center;align-items:center;padding-top:clamp(64px,12vw,140px);padding-bottom:clamp(64px,12vw,140px)}
 .hero h1{font-size:clamp(44px,9vw,92px)}
 .hero .sub{font-size:clamp(16px,2.4vw,20px);max-width:560px}
 .btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 
-/* sections */
 .about{display:flex;flex-wrap:wrap;gap:40px;align-items:center}
 .about>div:first-child{flex:1 1 320px;display:flex;flex-direction:column;gap:16px}
 .stats{flex:1 1 320px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
@@ -111,7 +102,6 @@ header.scrolled{box-shadow:0 6px 24px rgba(42,37,35,.1)}
 .avatar{width:110px;height:110px;border-radius:50%;margin:0 auto 14px;background:linear-gradient(135deg,var(--rose),#efe0c8)}
 .team .role{color:var(--gold);font-weight:500}
 
-/* form */
 .formcard{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
 .fgrid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
 .lbl{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:500}
@@ -120,54 +110,51 @@ header.scrolled{box-shadow:0 6px 24px rgba(42,37,35,.1)}
 .er{color:#b3261e;font-size:13px;min-height:1em}
 #ok{display:none;text-align:center;flex-direction:column;gap:14px;align-items:center}
 
-/* reviews */
 .rev{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:22px;align-items:center;text-align:center}
 .slide{display:none;width:100%}
 .slide.on{display:block}
 .stars{color:var(--gold);letter-spacing:4px}
 .slide p.q{font-size:20px;margin:10px 0}
 
-/* faq */
 .faqs{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
 .faq{width:100%;text-align:left;font:inherit;font-weight:500;font-size:17px;min-height:56px;padding:14px 20px;background:#fff;border:0;border-radius:14px;cursor:pointer;display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--ink)}
 .ans{padding:4px 20px 12px;display:none}
 .ans.open{display:block}
 
-/* contact + footer */
 .contact{background:var(--ink);color:#fff}
 .contact .cols{display:flex;flex-wrap:wrap;gap:40px}
 .contact .cols>div{flex:1 1 300px}
 .info{display:flex;flex-direction:column;gap:10px}
-.map{min-height:260px;border-radius:20px;background:#3a3330;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
+.map{border-radius:20px;overflow:hidden;background:#3a3330;min-height:300px}
+.map iframe{display:block;width:100%;height:300px;border:0}
+
 footer{background:#1c1816;color:#e9dfda;padding:32px 0}
 footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
 
-/* floating buttons */
 .wa,.top{position:fixed;right:16px;z-index:60;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,.3)}
 .wa{bottom:16px;background:#1d7a46}
 .top{bottom:84px;background:var(--ink);border:0;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s}
 .top.show{opacity:1;pointer-events:auto}
 
-/* lightbox */
 #lb{position:fixed;inset:0;z-index:100;background:rgba(20,16,15,.88);display:none;align-items:center;justify-content:center;padding:20px}
 #lb.open{display:flex}
 #lbimg{width:min(92vw,640px);aspect-ratio:1/1;border-radius:20px;display:flex;align-items:flex-end;padding:20px;color:#fff;font-size:20px;font-weight:500}
 #lbx{position:absolute;top:14px;right:14px;width:48px;height:48px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-size:24px;cursor:pointer}
 
-/* gentle reveal, one effect only */
 .rv{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.card,.btn,.tile{transition:none}}
 </style>
+<base target="_blank">
 </head>
 <body id="top">
 
 <!-- NAVBAR -->
 <header id="hdr">
   <div class="wrap bar">
-    <a class="logo" href="#top">DIVINE NAIL'S</a>
+    <a class="logo" href="#top">DIVINE NAILS</a>
     <nav class="dk" aria-label="Main">
-      <a class="nl" href="#about">About</a><a class="nl" href="#services">Services</a><a class="nl" href="#pricing">Pricing</a><!--<a class="nl" href="#gallery">Gallery</a><a class="nl" href="#team">Team</a>--><a class="nl" href="#reviews">Reviews</a><a class="nl" href="#contact">Contact</a>
+      <a class="nl" href="#about">About</a><a class="nl" href="#services">Services</a><a class="nl" href="#pricing">Pricing</a><a class="nl" href="#faq">FAQ</a><a class="nl" href="#contact">Contact</a>
       <a class="btn" href="#book" style="margin-left:12px">Book Now</a>
     </nav>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu">
@@ -175,7 +162,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
     </button>
   </div>
   <nav class="wrap" id="mmenu" aria-label="Mobile">
-    <a class="nl" href="#about">About</a><a class="nl" href="#services">Services</a><a class="nl" href="#pricing">Pricing</a><!--<a class="nl" href="#gallery">Gallery</a><a class="nl" href="#team">Team</a>--><a class="nl" href="#contact">Contact</a>
+    <a class="nl" href="#about">About</a><a class="nl" href="#services">Services</a><a class="nl" href="#pricing">Pricing</a><a class="nl" href="#faq">FAQ</a><a class="nl" href="#contact">Contact</a>
     <a class="btn" href="#book" style="margin-top:8px">Book Now</a>
   </nav>
 </header>
@@ -184,9 +171,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <p class="eyebrow"> Divine Nail's · Mankweng, Polokwane</p>
-    <h1> Divine Nail's: Where beauty meets confidence </h1>
-    <p class="sub"> What sets us apart is our unwavering commitment to hygiene, precision, and the use of only the finest professional-grade products. We treat every client as an individual, ensuring each set of nails is a reflection of their unique style.</p>
+    <p class="eyebrow">Divine Nails · Mankweng, Polokwane</p>
+    <h1>Where beauty meets confidence</h1>
+    <p class="sub">What sets us apart is our unwavering commitment to hygiene, precision, and the use of only the finest professional-grade products. We treat every client as an individual, ensuring each set of nails is a reflection of their unique style.</p>
     <div class="btns"><a class="btn" href="#book">Book Appointment</a><a class="btn o" href="#services">View Services</a></div>
   </div>
 </section>
@@ -197,14 +184,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
     <div>
       <p class="eyebrow">About us</p>
       <h2 class="h2">Our story</h2>
-      <p></p> Founded in 2026 by Lehlogonolo Makofane, Divine Nail's was born from a passion for beauty, precision, and self-care. After 3 years of experience in the nail industry, we envisioned a salon where every client receives not just a service, but a moment of genuine relaxation and personal attention.</p>
-<p></p>From the moment you walk through our doors, you can expect a warm welcome, a clean and serene environment, and a team dedicated to understanding your individual style. Whether you are visiting for a classic manicure or intricate nail art, we take the time to ensure every detail is perfect — because your hands deserve nothing less.</p>
-      <p> Our mission is to provide exceptional nail care in an environment that prioritizes hygiene, artistry, and client comfort above all else. We believe that beautiful nails are a reflection of confidence, and we are committed to helping every client leave feeling polished, refreshed, and truly cared for.
-</p>
+      <p>Founded in 2026 by Lehlogonolo Makofane, Divine Nails was born from a passion for beauty, precision, and self-care. After 3 years of experience in the nail industry, we envisioned a salon where every client receives not just a service, but a moment of genuine relaxation and personal attention.</p>
+      <p>From the moment you walk through our doors, you can expect a warm welcome, a clean and serene environment, and a team dedicated to understanding your individual style. Whether you are visiting for a classic manicure or intricate nail art, we take the time to ensure every detail is perfect — because your hands deserve nothing less.</p>
+      <p>Our mission is to provide exceptional nail care in an environment that prioritizes hygiene, artistry, and client comfort above all else. We believe that beautiful nails are a reflection of confidence, and we are committed to helping every client leave feeling polished, refreshed, and truly cared for.</p>
     </div>
     <div class="grid stats">
       <div class="card stat"><h3>150+</h3><p>Happy clients</p></div>
-  
       <div class="card stat"><h3>3</h3><p>Years of experience</p></div>
     </div>
   </div>
@@ -214,12 +199,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 <section id="services" class="s blush rv"><div class="wrap stack">
   <div class="center"><p class="eyebrow">What we do</p><h2 class="h2">Our services</h2></div>
   <div class="grid">
-    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg><h3>Cuts &amp; styling</h3><p>[Short description of your cuts and styling.]</p></div>
-    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 3c3 4 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 3-6 6-10z"/></svg><h3>Colour</h3><p>[Short description of your colour services.]</p></div>
-    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 4c4 4 10 4 14 0M5 12c4 4 10 4 14 0M5 20c4-4 10-4 14 0"/></svg><h3>Braids &amp; treatments</h3><p>[Short description of braiding and hair treatments.]</p></div>
-    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 21V11l3-8 3 8v10z"/></svg><h3>Nails</h3><p>[Short description of your nail services.]</p></div>
-    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 3l2.5 6 6.5.5-5 4.3 1.6 6.4L12 16.5 6.4 20.2 8 13.8 3 9.5 9.5 9z"/></svg><h3>Makeup</h3><p>[Short description of makeup and bridal makeup.]</p></div>
-    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14c1 2 7 2 8 0M9 9h.01M15 9h.01"/></svg><h3>Facials</h3><p>[Short description of facials and skincare.]</p></div>
+    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 21V11l3-8 3 8v10z"/></svg><h3>Manicures</h3><p>Beautiful, healthy nails — from classic manicures to gel finishes and stunning nail art, tailored to your style.</p></div>
+    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 4c4 4 10 4 14 0M5 12c4 4 10 4 14 0M5 20c4-4 10-4 14 0"/></svg><h3>Braids</h3><p>Flawless, protective braiding styles installed with care and precision, using quality products for lasting results.</p></div>
+    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14c1 2 7 2 8 0M9 9h.01M15 9h.01"/></svg><h3>Eye lashes</h3><p>Classic, hybrid and volume lash extensions that enhance your natural beauty — wake up every day looking effortlessly stunning.</p></div>
+    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 3c3 4 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 3-6 6-10z"/></svg><h3>Massages &amp; treatments</h3><p>Relax and renew with our calming massages and rejuvenating treatments, in a serene and professional environment.</p></div>
   </div>
 </div></section>
 
@@ -229,53 +212,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
   <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
     <div class="card"><h3 style="margin-top:0">Eye lashes</h3>
       <div class="row"><span>Classic Lashes</span><strong>R 80.00</strong></div>
-      <div class="row"><span>Volume Lahes</span></span><strong>R 100.00</strong></div>
-      <div class="row"><span>Hybrid Lashes</span></span><strong>R 120.00</strong></div></div>
+      <div class="row"><span>Volume Lashes</span><strong>R 100.00</strong></div>
+      <div class="row"><span>Hybrid Lashes</span><strong>R 120.00</strong></div></div>
     <div class="card"><h3 style="margin-top:0">Nails (Any Design)</h3>
       <div class="row"><span>Short Nails</span><strong>R 150.00</strong></div>
       <div class="row"><span>Medium Nails</span><strong>R 180.00</strong></div>
       <div class="row"><span>Long Nails</span><strong>R 220.00</strong></div></div>
-    <!--<div class="card"><h3 style="margin-top:0">Makeup &amp; facials</h3>
-      <div class="row"><span>[Service name]</span><strong>R [PRICE]</strong></div>
-      <div class="row"><span>[Service name]</span><strong>R [PRICE]</strong></div>
-      <div class="row"><span>[Service name]</span><strong>R [PRICE]</strong></div></div>-->
   </div>
 </div></section>
-
-<!-- SPECIAL OFFER -->
-<!--section class="offer"><div class="wrap">
-  <h2>[OFFER: 20% off your first visit]</h2>
-  <p>[Offer terms, e.g. valid until [DATE]. Mention this banner when booking.]</p>
-  <a class="btn" href="#book">Claim offer</a>
-</div></section>-->
-
-<!-- GALLERY (swap the coloured tiles for photos: see the how-to at the bottom of this file) -->
-<!--<section id="gallery" class="s rv"><div class="wrap stack">
-  <div class="center"><p class="eyebrow">Our work</p><h2 class="h2">Gallery</h2></div>
-  <div class="tabs" id="tabs">
-    <button class="chip on" data-f="All">All</button><button class="chip" data-f="Hair">Hair</button><button class="chip" data-f="Nails">Nails</button><!--<button class="chip" data-f="Makeup">Makeup</button><button class="chip" data-f="Bridal">Bridal</button>-->
-  <!--</div>
-  <div class="grid gal" id="gal">
-    <button class="tile g0" data-c="Hair">Hair</button>
-    <button class="tile g1" data-c="Nails">Nails</button>
-    <!--<button class="tile g2" data-c="Bridal">Bridal</button>-->
-    <!--<button class="tile g3" data-c="Makeup">Makeup</button>-->
-    <!--<button class="tile g2" data-c="Hair">Hair</button>-->
-    <!--<button class="tile g3" data-c="Nails">Nails</button>-->
-    <!--<button class="tile g0" data-c="Bridal">Bridal</button>-->
-    <!--<button class="tile g1" data-c="Makeup">Makeup</button>-->
-  </div>
-</div></section>
-
-<!-- TEAM -->
-<!--<section id="team" class="s blush rv"><div class="wrap stack">
-  <div class="center"><p class="eyebrow">The people</p><h2 class="h2">Meet the team</h2></div>
-  <div class="grid">
-    <div class="card team"><div class="avatar" role="img" aria-label="Photo placeholder for stylist"></div><h3 style="margin-top:0">[Stylist name]</h3><p class="role">[Speciality]</p><p style="font-size:14px;margin-top:6px"><a href="[INSTAGRAM LINK]">Instagram</a></p></div>
-    <div class="card team"><div class="avatar" role="img" aria-label="Photo placeholder for stylist"></div><h3 style="margin-top:0">[Stylist name]</h3><p class="role">[Speciality]</p><p style="font-size:14px;margin-top:6px"><a href="[INSTAGRAM LINK]">Instagram</a></p></div>
-    <div class="card team"><div class="avatar" role="img" aria-label="Photo placeholder for stylist"></div><h3 style="margin-top:0">[Stylist name]</h3><p class="role">[Speciality]</p><p style="font-size:14px;margin-top:6px"><a href="[INSTAGRAM LINK]">Instagram</a></p></div>
-  </div>
-</div></section>-->
 
 <!-- BOOKING -->
 <section id="book" class="s rv"><div class="wrap stack">
@@ -283,82 +227,64 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
   <div class="card formcard" id="ok" role="status">
     <h3 style="font-size:32px;margin:0">Request received</h3>
     <p>Thank you! We will confirm your booking shortly. You can also send it straight to WhatsApp.</p>
-    <a class="btn" id="waSend" href=>Send on WhatsApp</a>
+    <a class="btn" id="waSend" href="#" target="_blank" rel="noopener noreferrer">Send on WhatsApp</a>
   </div>
   <form class="card formcard" id="form" novalidate>
     <div class="fgrid">
       <label class="lbl">Full name<input class="in" id="f-name" type="text" autocomplete="name"><span class="er" id="e-name" aria-live="polite"></span></label>
       <label class="lbl">Phone / WhatsApp<input class="in" id="f-phone" type="tel" autocomplete="tel"><span class="er" id="e-phone" aria-live="polite"></span></label>
       <label class="lbl">Email (optional)<input class="in" id="f-email" type="email" autocomplete="email"><span class="er" id="e-email" aria-live="polite"></span></label>
-      <label class="lbl">Service<select class="in" id="f-service"><option value="">Choose a service</option><option>Cuts and styling</option><option>Colour</option><option>Braids and treatments</option><option>Nails</option><option>Makeup</option><option>Facials</option></select><span class="er" id="e-service" aria-live="polite"></span></label>
-      <label class="lbl">Stylist<select class="in" id="f-stylist"><option value="">No preference</option><option>[Stylist 1]</option><option>[Stylist 2]</option><option>[Stylist 3]</option></select></label>
+      <label class="lbl">Service<select class="in" id="f-service"><option value="">Choose a service</option><option>Manicure</option><option>Braids</option><option>Eye lashes</option><option>Massage / treatment</option></select><span class="er" id="e-service" aria-live="polite"></span></label>
+      <label class="lbl">Stylist<select class="in" id="f-stylist"><option value="">No preference</option><option>Lehlogonolo</option><option>Lesedi</option><option>Karabo</option></select></label>
       <label class="lbl">Date<input class="in" id="f-date" type="date"><span class="er" id="e-date" aria-live="polite"></span></label>
       <label class="lbl">Time<input class="in" id="f-time" type="time"></label>
     </div>
-    <label class="lbl">Notes<textarea class="in" id="f-notes" rows="3"></textarea></label>
+    <label class="lbl">Notes (optional)<textarea class="in" id="f-notes" rows="3"></textarea></label>
     <div class="btns" style="justify-content:flex-start">
       <button class="btn" type="submit">Request booking</button>
-      <a class="btn o" id="waBook" href=>Book via WhatsApp</a>
+      <a class="btn o" id="waBook" href="#" target="_blank" rel="noopener noreferrer">Book via WhatsApp</a>
     </div>
   </form>
 </div></section>
 
-<!-- TESTIMONIALS -->
-<!--<section id="reviews" class="s blush rv"><div class="wrap rev">
-  <p class="eyebrow">Kind words</p><h2 class="h2">What clients say</h2>
-  <div style="width:100%" id="slides">
-    <div class="card slide on"><p class="stars" aria-label="5 out of 5 stars">★★★★★</p><p class="q">[Add a real client review here.]</p><strong>[Client name]</strong></div>
-    <div class="card slide"><p class="stars" aria-label="5 out of 5 stars">★★★★★</p><p class="q">[Add a second client review here.]</p><strong>[Client name]</strong></div>
-    <div class="card slide"><p class="stars" aria-label="5 out of 5 stars">★★★★★</p><p class="q">[Add a third client review here.]</p><strong>[Client name]</strong></div>
-  </div>
-  <div class="btns"><button class="chip" id="prev" aria-label="Previous review">Previous</button><button class="chip" id="next" aria-label="Next review">Next</button></div>
-</div></section>-->
-
 <!-- FAQ -->
-<!--<section id="faq" class="s rv"><div class="wrap">
+<section id="faq" class="s rv"><div class="wrap">
   <div class="center" style="margin-bottom:24px"><p class="eyebrow">Good to know</p><h2 class="h2">FAQ</h2></div>
   <div class="faqs" id="faqs">
     <div><button class="faq" aria-expanded="false">How do I cancel or reschedule?<span aria-hidden="true">+</span></button><p class="ans">We kindly request at least 24 hours' notice for cancellations or rescheduling. In accordance with the Consumer Protection Act, reasonable cancellation fees may apply to late cancellations or no-shows. Please contact us by phone or via our online booking page to make any changes.</p></div>
     <div><button class="faq" aria-expanded="false">Do you take a deposit?<span aria-hidden="true">+</span></button><p class="ans">Yes, a deposit is required to secure your appointment and will be deducted from your final bill. As per the Consumer Protection Act, deposits for cancellations made with sufficient notice (at least 24 hours) are refundable or transferable to a new booking.</p></div>
     <div><button class="faq" aria-expanded="false">Which products do you use?<span aria-hidden="true">+</span></button><p class="ans">We use only professional, high-quality products that comply with South African health and safety standards. All tools are sterilized in line with municipal health regulations. If you have any allergies or sensitivities, please inform us in advance so we can accommodate you safely.</p></div>
   </div>
-</div></section>-->
+</div></section>
 
 <!-- CONTACT -->
 <section id="contact" class="s contact"><div class="wrap">
   <div class="cols">
     <div class="info">
       <h2 class="h2">Visit us</h2>
-      <p> Mankweng Stand 401, Unit E, Polokwane 0727 </p>
-      <p>Phone / WhatsApp: +27 71 064 8238/+27 76 958 9222</p>
-      <p>Email: Mr.Sekgobelaa@gmail.com/Lehlogonolom354@gmail.com</p>
+      <p>Mankweng Stand 401, Unit E, Polokwane 0727</p>
+      <p>Phone / WhatsApp: +27 71 064 8238<br>+27 76 958 9222</p>
+      <p>Email: Mr.Sekgobelaa@gmail.com<br>Lehlogonolom354@gmail.com</p>
       <p style="margin-top:8px"><strong>Opening hours</strong></p>
-      <p> Monday–Friday 09:00–17:00 <br> Saturday 09:00–15:00 <br>Sunday closed</p>
+      <p>Monday–Friday 09:00–17:00<br>Saturday 09:00–15:00<br>Sunday closed</p>
     </div>
-    <!--<div class="map" role="img" aria-label="Map placeholder"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3647.8580014171553!2d29.72937201090828!3d-23.894653478482944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec6c9002e6d44c1%3A0xb4f6a79f4bcbfc6a!2sMabule%20Residence!5e0!3m2!1sen!2sza!4v1791872413105!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"style="display: block; border: 0;" width="100%" height="100%"></iframe></div>-->
+    <div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3647.8580014171553!2d29.72937201090828!3d-23.894653478482944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec6c9002e6d44c1%3A0xb4f6a79f4bcbfc6a!2sMabule%20Residence!5e0!3m2!1sen!2sza!4v1791872413105!5m2!1sen!2sza" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen title="Divine Nails location"></iframe></div>
   </div>
 </div></section>
 </main>
 
 <!-- FOOTER -->
 <footer><div class="wrap">
-  <p>© 2026 Divine Nails . All rights reserved.</p>
-  <p><a href="[INSTAGRAM LINK]">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=100071310304807">Facebook</a> · <a href="tiktok.com/@lastbornyapianohub2">TikTok</a></p>
+  <p>© 2026 Divine Nails. All rights reserved.</p>
+  <p><a href="#">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=100071310304807">Facebook</a> · <a href="https://www.tiktok.com/@lastbornyapianohub2">TikTok</a></p>
   <a href="#top" style="text-decoration:underline">Back to top</a>
 </div></footer>
+
 <!-- FLOATING BUTTONS -->
 <button class="top" id="toTop" aria-label="Back to top"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
-<a class="wa" id="waFloat" href="#" aria-label="Chat on WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/></svg></a>
-
-<!-- LIGHTBOX -->
-<div id="lb" role="dialog" aria-modal="true" aria-label="Gallery image"><button id="lbx" aria-label="Close">×</button><div id="lbimg"></div></div>
-
+<a class="wa" id="waFloat" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/></svg></a>
 
 <script>
-/* ============================================================
-  CUSTOMISE HERE (3 of 3): your WhatsApp number.
-  Digits only, with country code and no + or spaces. Example for South Africa: 27821234567
-============================================================ */
 var WHATSAPP = "27710648238";
 
 (function () {
@@ -408,14 +334,15 @@ var WHATSAPP = "27710648238";
   lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('open')) closeLb(); });
 
-  /* Testimonial slider */
+  /* Testimonial slider (guarded: section may be hidden) */
   var slides = $$('#slides .slide'), n = 0;
-  function show(i) { n = (i + slides.length) % slides.length; slides.forEach(function (s, k) { s.classList.toggle('on', k === n); }); }
-  $('#prev').addEventListener('click', function () { show(n - 1); });
-  $('#next').addEventListener('click', function () { show(n + 1); });
-  setInterval(function () { if (!document.hidden && !document.activeElement.closest('.rev')) show(n + 1); }, 7000);
+  function show(i) { if (!slides.length) return; n = (i + slides.length) % slides.length; slides.forEach(function (s, k) { s.classList.toggle('on', k === n); }); }
+  var prev = $('#prev'), next = $('#next');
+  if (prev) prev.addEventListener('click', function () { show(n - 1); });
+  if (next) next.addEventListener('click', function () { show(n + 1); });
+  if (slides.length) setInterval(function () { if (!document.hidden && !(document.activeElement && document.activeElement.closest('.rev'))) show(n + 1); }, 7000);
 
-  /* FAQ accordion */
+  /* FAQ accordion (guarded) */
   $$('#faqs .faq').forEach(function (b) {
     b.addEventListener('click', function () {
       var open = b.getAttribute('aria-expanded') === 'true';
@@ -433,7 +360,7 @@ var WHATSAPP = "27710648238";
     var m = 'Hi, I would like to book ' + (v('service') || 'an appointment') + (v('date') ? ' on ' + v('date') : '') + (v('time') ? ' at ' + v('time') : '') + (v('stylist') ? ' with ' + v('stylist') : '') + (v('name') ? '. Name: ' + v('name') : '') + (v('notes') ? '. Notes: ' + v('notes') : '');
     return 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(m);
   }
-  function refreshWa() { ['#waBook', '#waSend', '#waFloat'].forEach(function (s) { $(s).href = waLink(); }); }
+  function refreshWa() { ['#waBook', '#waSend', '#waFloat'].forEach(function (s) { var el = $(s); if (el) el.href = waLink(); }); }
   $('#form').addEventListener('input', refreshWa); $('#form').addEventListener('change', refreshWa); refreshWa();
   function setErr(id, msg) { $('#e-' + id).textContent = msg; var f = $('#f-' + id); f.classList.toggle('bad', !!msg); f.setAttribute('aria-invalid', !!msg); return !msg; }
   $('#form').addEventListener('submit', function (e) {
@@ -447,23 +374,9 @@ var WHATSAPP = "27710648238";
     ];
     if (ok.indexOf(false) > -1) { var first = $('.bad'); if (first) first.focus(); return; }
     refreshWa(); $('#form').style.display = 'none'; $('#ok').style.display = 'flex'; $('#ok').scrollIntoView({ block: 'center' });
-    /* To receive bookings by email, connect this form to a free service such as Formspree or Netlify Forms. */
   });
 })();
 </script>
 
-<!--
-HOW TO CUSTOMISE
-1. Search this file for [ and replace each [BRACKET] with your real details (name, address, prices, reviews, links).
-2. Colours: edit the five variables at the top of the <style> block.
-3. WhatsApp number: edit WHATSAPP in the script near the bottom.
-4. Real photos: put your images in the same folder (for example gallery-1.jpg), then replace a gallery tile such as
-   <button class="tile g0" data-c="Hair">Hair</button> with
-   <button class="tile" data-c="Hair" style="background:url('gallery-1.jpg') center/cover">Hair</button>
-5. Google Map: replace the map placeholder text with the iframe from Google Maps > Share > Embed a map.
-HOW TO PUBLISH FREE
-Netlify: go to app.netlify.com/drop and drag the folder containing index.html onto the page.
-GitHub Pages: create a repository, upload index.html, then Settings > Pages > deploy from the main branch.
--->
 </body>
 </html>
