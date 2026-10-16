@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Divine Nails | Professional Nail Salon in Mankweng, Polokwane</title>
 <meta name="description" content="Divine Nails in Mankweng: Book your appointment online.">
@@ -85,6 +86,17 @@ header.scrolled{box-shadow:0 6px 24px rgba(42,37,35,.1)}
 .card h3{font-size:28px;margin:12px 0 6px}
 .row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed #e3d8d3}
 
+.gal{grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))}
+.gslot{position:relative;aspect-ratio:1/1;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#f3e2da,#ead4c9);border:1.5px dashed #d8bfb2;display:flex;align-items:center;justify-content:center}
+.gslot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:pointer;display:block;transition:transform .25s,box-shadow .25s}
+.gslot img:hover{transform:scale(1.03)}
+.soon-label{display:none;color:var(--gold);font-style:italic;font-size:15px;letter-spacing:.06em}
+.gslot.soon .soon-label{display:block}
+#glb{position:fixed;inset:0;z-index:100;background:rgba(20,16,15,.9);display:none;align-items:center;justify-content:center;padding:20px}
+#glb.open{display:flex}
+#glb img{width:min(92vw,700px);max-height:85vh;object-fit:contain;border-radius:16px}
+#glbx{position:absolute;top:14px;right:14px;width:48px;height:48px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-size:24px;cursor:pointer}
+
 .formcard{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
 .fgrid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
 .lbl{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:500}
@@ -107,12 +119,18 @@ header.scrolled{box-shadow:0 6px 24px rgba(42,37,35,.1)}
 footer{background:#1c1816;color:#e9dfda;padding:32px 0}
 footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
 
+/* MAINTENANCE MODE — when body has class "down", hide the site, show #maint */
+body.down header,body.down main,body.down footer,body.down .wa,body.down .top{display:none}
+#maint{display:none}
+body.down #maint{display:flex;position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#f6e6e1 0%,#fffaf7 55%,#efe0c8 100%);align-items:center;justify-content:center;text-align:center;padding:24px}
+.maint-box{display:flex;flex-direction:column;gap:16px;align-items:center}
+
 .wa,.top{position:fixed;right:16px;z-index:60;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,.3)}
 .wa{bottom:16px;background:#1d7a46}
 .top{bottom:84px;background:var(--ink);border:0;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s}
 .top.show{opacity:1;pointer-events:auto}
 
-.rv{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.card,.btn,.faq{transition:none}}
 </style>
@@ -120,12 +138,20 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 </head>
 <body id="top">
 
+<!-- MAINTENANCE SCREEN — only visible when MAINTENANCE_MODE = true -->
+<div id="maint"><div class="maint-box">
+  <p class="eyebrow">Divine Nails · Mankweng, Polokwane</p>
+  <h1 style="font-size:clamp(40px,8vw,80px)">Coming soon</h1>
+  <p style="max-width:440px">Our website is still under construction. Follow us on Facebook and TikTok for updates, or reach us directly on WhatsApp.</p>
+  <a class="btn" href="https://wa.me/27710648238?text=Hi%20Divine%20Nails!" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+</div></div>
+
 <!-- NAVBAR -->
 <header id="hdr">
   <div class="wrap bar">
     <a class="logo" href="#top">DIVINE NAILS</a>
     <nav class="dk" aria-label="Main">
-      <a class="nl" href="#about">About</a><a class="nl" href="#services">Services</a><a class="nl" href="#pricing">Pricing</a><a class="nl" href="#faq">FAQ</a><a class="nl" href="#contact">Contact</a>
+      <a class="nl" href="#about">About</a><a class="nl" href="#services">Services</a><a class="nl" href="#pricing">Pricing</a><a class="nl" href="#gallery">Gallery</a><a class="nl" href="#faq">FAQ</a><a class="nl" href="#contact">Contact</a>
       <a class="btn" href="#book" style="margin-left:12px">Book Now</a>
     </nav>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu">
@@ -133,7 +159,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
     </button>
   </div>
   <nav class="wrap" id="mmenu" aria-label="Mobile">
-    <a class="nl" href="#about">About</a><a class="nl" href="#services">Services</a><a class="nl" href="#pricing">Pricing</a><a class="nl" href="#faq">FAQ</a><a class="nl" href="#contact">Contact</a>
+    <a class="nl" href="#about">About</a><a class="nl" href="#services">Services</a><a class="nl" href="#pricing">Pricing</a><a class="nl" href="#gallery">Gallery</a><a class="nl" href="#faq">FAQ</a><a class="nl" href="#contact">Contact</a>
     <a class="btn" href="#book" style="margin-top:8px">Book Now</a>
   </nav>
 </header>
@@ -191,7 +217,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
       <div class="row"><span>Long Nails</span><strong>R 220.00</strong></div></div>
   </div>
 </div></section>
-  <!-- GALLERY -->
+
+<!-- GALLERY -->
 <!-- TO ADD A PHOTO: upload the picture to your GitHub repository (Add file > Upload files),
      then copy its URL and paste it into one of the empty src="" slots below. -->
 <section id="gallery" class="s blush rv"><div class="wrap stack">
@@ -273,8 +300,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
   <div class="info">
     <h2 class="h2">Visit us</h2>
     <p>Mankweng Stand 401, Unit E, Polokwane 0727</p>
-    <p>Phone / WhatsApp: +27 71 064 8238/+27 76 958 9222</p>
-    <p>Email: Mr.Sekgobelaa@gmail.com/Lehlogonolom354@gmail.com</p>
+    <p>Phone / WhatsApp: +27 71 064 8238<br>+27 76 958 9222</p>
+    <p>Email: Mr.Sekgobelaa@gmail.com<br>Lehlogonolom354@gmail.com</p>
     <p style="margin-top:8px"><strong>Opening hours</strong></p>
     <p>Monday–Friday 09:00–17:00<br>Saturday 09:00–15:00<br>Sunday closed</p>
   </div>
@@ -288,6 +315,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
   <a href="#top" style="text-decoration:underline">Back to top</a>
 </div></footer>
 
+<!-- GALLERY LIGHTBOX -->
+<div id="glb" role="dialog" aria-modal="true" aria-label="Gallery photo"><button id="glbx" aria-label="Close">×</button><img id="glbImg" src="" alt="Divine Nails work"></div>
+
 <!-- FLOATING BUTTONS -->
 <button class="top" id="toTop" aria-label="Back to top"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <a class="wa" id="waFloat" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/></svg></a>
@@ -295,7 +325,18 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 <script>
 var WHATSAPP = "27710648238";
 
+/* ============================================================
+  ★ MAINTENANCE MODE ★  — THIS IS YOUR ON/OFF SWITCH
+  true  = website shows "Coming soon" (site is down)
+  false = website is live for everyone
+  Just change the word true/false, then commit changes.
+============================================================ */
+var MAINTENANCE_MODE = false;
+
+/* Gallery: paste photo URLs into the empty src="" slots in the GALLERY section above. */
+
 (function () {
+  try {
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
@@ -376,6 +417,30 @@ var WHATSAPP = "27710648238";
     $('#form').style.display = 'flex';
     $('#book').scrollIntoView({ block: 'start' });
   });
+  } catch (err) { /* never let one error break the page */ }
+})();
+
+
+/* Gallery lightbox — click a filled photo to enlarge it */
+(function () {
+  var glb = document.getElementById('glb'), glbImg = document.getElementById('glbImg');
+  if (!glb) return;
+  function closeGlb() { glb.classList.remove('open'); }
+  document.getElementById('glbx').addEventListener('click', closeGlb);
+  glb.addEventListener('click', function (e) { if (e.target === glb) closeGlb(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeGlb(); });
+  var imgs = document.querySelectorAll('.gslot img');
+  for (var i = 0; i < imgs.length; i++) {
+    imgs[i].addEventListener('click', function () {
+      if (!this.src) return;
+      glbImg.src = this.src; glb.classList.add('open');
+    });
+  }
+})();
+
+/* Maintenance mode toggle — reads the MAINTENANCE_MODE switch above */
+(function () {
+  try { if (MAINTENANCE_MODE) { document.body.classList.add('down'); } } catch (e) {}
 })();
 
 /* ============================================================
@@ -404,6 +469,14 @@ var WHATSAPP = "27710648238";
     }
   });
 })();
+</script>
+
+<script>
+/* Safety net: guarantee no section ever stays invisible */
+setTimeout(function () {
+  var els = document.querySelectorAll('.rv');
+  for (var i = 0; i < els.length; i++) { els[i].classList.add('in'); }
+}, 1000);
 </script>
 
 </body>
