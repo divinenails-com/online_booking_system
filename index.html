@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- tabfix:2026-10-19-v2 -->
 <meta charset="utf-8">
+<base target="_self">
 <script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Divine Nails | Professional Nail Salon in Mankweng, Polokwane</title>
@@ -114,10 +116,12 @@ header.scrolled{box-shadow:0 6px 24px rgba(42,37,35,.1)}
 .ans>div{padding:4px 20px 16px;font-size:15px}
 .ans.open{max-height:400px}
 
-.contact{background:var(--ink);color:#fff}
+/* Contact + Footer — twin rounded dark panels, identical width & margins */
+#contact{background:transparent;padding:clamp(56px,9vw,100px) clamp(16px,5vw,40px) 16px}
+#contact .wrap{background:var(--ink);color:#fff;border-radius:24px;padding:clamp(36px,5vw,64px) clamp(24px,5vw,48px);box-shadow:0 10px 30px rgba(42,37,35,.12)}
 .info{display:flex;flex-direction:column;gap:10px;max-width:560px}
-footer{background:#1c1816;color:#e9dfda;padding:32px 0}
-footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+footer{padding:16px clamp(16px,5vw,40px) 44px}
+footer .wrap{background:#1c1816;color:#e9dfda;border-radius:24px;padding:32px clamp(16px,5vw,40px);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;box-shadow:0 10px 30px rgba(42,37,35,.12)}
 
 /* MAINTENANCE MODE — when body has class "down", hide the site, show #maint */
 body.down header,body.down main,body.down footer,body.down .wa,body.down .top{display:none}
@@ -150,8 +154,110 @@ body.mlock{overflow:hidden}
 /* Justified body text — Our Story & service descriptions */
 #about p{text-align:justify;text-align-last:left}
 #services .card p{text-align:justify;text-align-last:left}
+
+
+/* ════════════════════════════════════════════════════════════
+   LIQUID — opt-in glass utility
+   Usage: add class="liquid" to any surface. Add "liquid--blur"
+   only where backdrop blur earns its GPU cost (few elements).
+   Transitions: transform + opacity only (compositor-friendly).
+   ════════════════════════════════════════════════════════════ */
+:root{--ease-out:cubic-bezier(.22,.8,.28,1);--dur-fast:.2s;--dur-med:.35s}
+
+.liquid{
+  position:relative;
+  isolation:isolate;               /* sheen contained to this element */
+  background:rgba(255,255,255,.55);
+  border:1px solid rgba(255,255,255,.65);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 8px 30px rgba(42,37,35,.08);
+  transition:transform var(--dur-med) var(--ease-out),
+             box-shadow var(--dur-med) var(--ease-out),
+             background-color var(--dur-med) var(--ease-out);
+}
+.liquid::before{                    /* glossy top-light sheen */
+  content:"";position:absolute;inset:0;z-index:0;border-radius:inherit;
+  pointer-events:none;opacity:.85;
+  background:linear-gradient(115deg,rgba(255,255,255,.35),transparent 42%);
+  transition:opacity var(--dur-med) var(--ease-out);
+}
+.liquid>*{position:relative;z-index:1}   /* content always above sheen */
+.liquid:hover{
+  transform:translateY(-4px);
+  background:rgba(255,255,255,.68);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 18px 44px rgba(42,37,35,.15);
+}
+.liquid:hover::before{opacity:1}
+
+/* Blur modifier — expensive; header + FAQ buttons only (4 total) */
+.liquid--blur{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+
+/* Per-element refinements */
+.faq.liquid:hover{background:rgba(255,251,247,.85)}  /* FAQ keeps its warm tint on hover */
+.card.liquid:hover{transform:translateY(-5px) scale(1.008)}
+
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+  .liquid{background:rgba(255,255,255,.93)}          /* solid fallback, no broken glass */
+}
+@media(prefers-reduced-motion:reduce){
+  .liquid,.liquid::before{transition:none}
+}
+
+/* ════════════════════════════════════════════════════════════
+   OPACITY SYSTEM — fades everywhere, staggered reveals
+   ════════════════════════════════════════════════════════════ */
+
+/* hero load-in */
+.hero .wrap{animation:heroIn .8s var(--ease-out) both}
+@keyframes heroIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* staggered cascade: children of a revealed section rise one by one */
+.rv .grid>*,.rv .faqs>*{opacity:0;transform:translateY(16px);
+  transition:opacity .55s var(--ease-out),transform .55s var(--ease-out)}
+.rv.in .grid>*,.rv.in .faqs>*{opacity:1;transform:none}
+.rv.in .grid>*:nth-child(2),.rv.in .faqs>*:nth-child(2){transition-delay:.07s}
+.rv.in .grid>*:nth-child(3),.rv.in .faqs>*:nth-child(3){transition-delay:.14s}
+.rv.in .grid>*:nth-child(4),.rv.in .faqs>*:nth-child(4){transition-delay:.21s}
+.rv.in .grid>*:nth-child(5){transition-delay:.28s}
+.rv.in .grid>*:nth-child(6){transition-delay:.35s}
+
+/* re-assert liquid hovers (they tie on specificity — last rule wins) */
+.card.liquid:hover{transform:translateY(-5px) scale(1.008)}
+.faq.liquid:hover{transform:none}
+
+/* hover fades — nav, footer, socials */
+.nl{transition:color .2s var(--ease-out),opacity .2s var(--ease-out),transform .35s var(--ease-out)}
+.nl:hover{opacity:.7}
+footer a{transition:opacity .2s var(--ease-out)}
+footer a:hover{opacity:.7}
+
+/* button press feedback */
+.btn{transition:transform .2s var(--ease-out),box-shadow .2s var(--ease-out),opacity .15s var(--ease-out)}
+.btn:active{opacity:.85;transform:translateY(0) scale(.97)}
+
+/* gallery: gentle dim behind the zoom */
+.gslot img{transition:transform .35s var(--ease-out),opacity .35s var(--ease-out)}
+.gslot:hover img{opacity:.92;transform:scale(1.05)}
+
+/* floating buttons */
+.wa,.top{transition:transform .3s var(--ease-out),opacity .3s var(--ease-out)}
+.wa:hover{opacity:.92;transform:scale(1.1)}
+.top:hover{opacity:.85}
+
+/* modal & lightbox entrances */
+@starting-style{.mdl-card{opacity:0;transform:translateY(16px) scale(.98)}}
+.mdl-card{transition:opacity .3s var(--ease-out),transform .3s var(--ease-out)}
+#glb.open img{animation:pop .28s var(--ease-out)}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+
+/* brand-coloured text selection */
+::selection{background:#a8584f;color:#fff}
+
+@media(prefers-reduced-motion:reduce){
+  .hero .wrap{animation:none}
+  .rv .grid>*,.rv .faqs>*{opacity:1;transform:none;transition:none}
+  .mdl-card{transition:none}
+}
 </style>
-<base target="_blank">
 <base target="_blank">
 </head>
 <body id="top">
@@ -161,11 +267,11 @@ body.mlock{overflow:hidden}
   <p class="eyebrow">Divine Nails · Mankweng, Polokwane</p>
   <h1 style="font-size:clamp(40px,8vw,80px)">Coming soon</h1>
   <p style="max-width:440px">Our website is currently undergoing scheduled improvements. In the meantime, please reach out to us directly on WhatsApp. We remain fully operational and ready to assist you.</p>
-  <a class="btn" href="https://wa.me/27710648238?text=Hi%20Divine%20Nails!" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+  <a class="btn" href="https://wa.me/27710648238?text=Hi%20Divine%20Nails!">Chat on WhatsApp</a>
 </div></div>
 
 <!-- NAVBAR -->
-<header id="hdr">
+<header id="hdr" class="liquid liquid--blur">
   <div class="wrap bar">
     <a class="logo" href="#top">DIVINE NAILS</a>
     <nav class="dk" aria-label="Main">
@@ -204,8 +310,8 @@ body.mlock{overflow:hidden}
       <p>Our mission is to provide exceptional nail care in an environment that prioritizes hygiene, artistry, and client comfort above all else. We believe that beautiful nails are a reflection of confidence, and we are committed to helping every client leave feeling polished, refreshed, and truly cared for.</p>
     </div>
     <div class="grid stats">
-      <div class="card stat"><h3>150+</h3><p>Happy clients</p></div>
-      <div class="card stat"><h3>3</h3><p>Years of experience</p></div>
+      <div class="card stat liquid"><h3>150+</h3><p>Happy clients</p></div>
+      <div class="card stat liquid"><h3>3</h3><p>Years of experience</p></div>
     </div>
   </div>
 </div></section>
@@ -214,10 +320,10 @@ body.mlock{overflow:hidden}
 <section id="services" class="s blush rv"><div class="wrap stack">
   <div class="center"><p class="eyebrow">What we do</p><h2 class="h2">Our services</h2></div>
   <div class="grid">
-    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 21V11l3-8 3 8v10z"/></svg><h3>Manicures</h3><p>Beautiful, healthy nails — from classic manicures to gel finishes and stunning nail art, tailored to your style.</p></div>
-    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 4c4 4 10 4 14 0M5 12c4 4 10 4 14 0M5 20c4-4 10-4 14 0"/></svg><h3>Braids <span style="font-size:.55em;letter-spacing:.08em;color:var(--gold)">(COMING SOON)</span></h3><p>Flawless, protective braiding styles installed with care and precision, using quality products for lasting results.</p></div>
-    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14c1 2 7 2 8 0M9 9h.01M15 9h.01"/></svg><h3>Eye lashes</h3><p>Classic, hybrid and volume lash extensions that enhance your natural beauty — wake up every day looking effortlessly stunning.</p></div>
-    <div class="card"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 3c3 4 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 3-6 6-10z"/></svg><h3>Massages &amp; treatments <span style="font-size:.55em;letter-spacing:.08em;color:var(--gold)">(COMING SOON)</span></h3><p>Relax and renew with our calming massages and rejuvenating treatments, in a serene and professional environment.</p></div>
+    <div class="card liquid"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 21V11l3-8 3 8v10z"/></svg><h3>Manicures</h3><p>Beautiful, healthy nails — from classic manicures to gel finishes and stunning nail art, tailored to your style.</p></div>
+    <div class="card liquid"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 4c4 4 10 4 14 0M5 12c4 4 10 4 14 0M5 20c4-4 10-4 14 0"/></svg><h3>Braids <span style="font-size:.55em;letter-spacing:.08em;color:var(--gold)">(COMING SOON)</span></h3><p>Flawless, protective braiding styles installed with care and precision, using quality products for lasting results.</p></div>
+    <div class="card liquid"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14c1 2 7 2 8 0M9 9h.01M15 9h.01"/></svg><h3>Eye lashes</h3><p>Classic, hybrid and volume lash extensions that enhance your natural beauty — wake up every day looking effortlessly stunning.</p></div>
+    <div class="card liquid"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 3c3 4 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 3-6 6-10z"/></svg><h3>Massages &amp; treatments <span style="font-size:.55em;letter-spacing:.08em;color:var(--gold)">(COMING SOON)</span></h3><p>Relax and renew with our calming massages and rejuvenating treatments, in a serene and professional environment.</p></div>
   </div>
 </div></section>
 
@@ -225,19 +331,19 @@ body.mlock{overflow:hidden}
 <section id="pricing" class="s rv"><div class="wrap stack">
   <div class="center"><p class="eyebrow">Price list</p><h2 class="h2">Pricing</h2></div>
   <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
-    <div class="card"><h3 style="margin-top:0">Eye lashes</h3>
+    <div class="card liquid"><h3 style="margin-top:0">Eye lashes</h3>
       <div class="row"><span>Classic Lashes</span><strong>R 80.00</strong></div>
       <div class="row"><span>Volume Lashes</span><strong>R 100.00</strong></div>
       <div class="row"><span>Hybrid Lashes</span><strong>R 120.00</strong></div></div>
-    <div class="card"><h3 style="margin-top:0">Manicures (Any Design)</h3>
+    <div class="card liquid"><h3 style="margin-top:0">Manicures (Any Design)</h3>
       <div class="row"><span>Short Nails</span><strong>R 150.00</strong></div>
       <div class="row"><span>Medium Nails</span><strong>R 180.00</strong></div>
       <div class="row"><span>Long Nails</span><strong>R 220.00</strong></div></div>
-    <div class="card"><h3 style="margin-top:0">Braids</h3>
+    <div class="card liquid"><h3 style="margin-top:0">Braids</h3>
       <div class="row"><span>Pricing</span><strong style="color:var(--gold);letter-spacing:.08em;font-size:13px">TO BE ANNOUNCED</strong></div>
       <div class="row"><span>Availability</span><strong style="color:var(--gold);letter-spacing:.08em;font-size:13px">COMING SOON</strong></div>
       </div>
-    <div class="card"><h3 style="margin-top:0">Massages &amp; Treatments</h3>
+    <div class="card liquid"><h3 style="margin-top:0">Massages &amp; Treatments</h3>
       <div class="row"><span>Pricing</span><strong style="color:var(--gold);letter-spacing:.08em;font-size:13px">TO BE ANNOUNCED</strong></div>
       <div class="row"><span>Availability</span><strong style="color:var(--gold);letter-spacing:.08em;font-size:13px">COMING SOON</strong></div>
       </div>
@@ -286,11 +392,11 @@ body.mlock{overflow:hidden}
 <!-- BOOKING -->
 <section id="book" class="s rv"><div class="wrap stack">
   <div class="center"><p class="eyebrow">Reserve your spot</p><h2 class="h2">Book an appointment</h2></div>
-  <div class="card formcard" id="ok" role="status">
+  <div class="card formcard liquid" id="ok" role="status">
     <h3 style="font-size:32px;margin:0">Request received</h3>
     <p>Thank you! Please review your booking details below and confirm them on WhatsApp — we will finalise your appointment from there.</p>
     <div id="okSummary" style="text-align:left;background:var(--blush);border-radius:14px;padding:16px 20px;font-size:15px;line-height:1.9"></div>
-    <a class="btn" id="waSend" href="#" target="_blank" rel="noopener noreferrer" style="background:#1d7a46">Confirm on WhatsApp</a>
+    <a class="btn" id="waSend" href="#" style="background:#1d7a46">Confirm on WhatsApp</a>
     <a class="btn o" href="#book" id="againBtn">Make another booking</a>
   </div>
   <form class="card formcard" id="form" novalidate>
@@ -301,12 +407,12 @@ body.mlock{overflow:hidden}
       <label class="lbl">Service<select class="in" id="f-service"><option value="">Choose a service</option><option>Manicure</option><option>Braids</option><option>Eye lashes</option><option>Massage / treatment</option></select><span class="er" id="e-service" aria-live="polite"></span></label>
       <label class="lbl">Stylist<select class="in" id="f-stylist"><option value="">No preference</option><option>Lehlogonolo</option><option>Lesedi</option><option>Karabo</option></select></label>
       <label class="lbl">Date<input class="in" id="f-date" type="date"><span class="er" id="e-date" aria-live="polite"></span></label>
-      <label class="lbl">Time<input class="in" id="f-time" type="time"></label>
+      <label class="lbl">Time<input class="in" id="f-time" type="time"><span class="er" id="e-time" aria-live="polite"></span></label>
     </div>
     <label class="lbl">Notes (optional)<textarea class="in" id="f-notes" rows="3"></textarea></label>
     <div class="btns" style="justify-content:flex-start">
       <button class="btn" type="submit">Request booking</button>
-      <a class="btn o" id="waBook" href="#" target="_blank" rel="noopener noreferrer">Book via WhatsApp</a>
+      <a class="btn o" id="waBook" href="#">Book via WhatsApp</a>
     </div>
     <p style="font-size:13px;color:#8a7f78;margin-top:4px">By requesting a booking, you agree to our
       <a href="#" data-mdl="m-terms" style="text-decoration:underline">Terms of Service</a> and
@@ -319,14 +425,14 @@ body.mlock{overflow:hidden}
 <section id="faq" class="s rv"><div class="wrap">
   <div class="center" style="margin-bottom:24px"><p class="eyebrow">Good to know</p><h2 class="h2">FAQ</h2></div>
   <div class="faqs" id="faqs">
-    <div><button class="faq" aria-expanded="false"><span>How do I cancel or reschedule?</span><span class="ic" aria-hidden="true">+</span></button><div class="ans"><div>We kindly request at least 24 hours' notice for cancellations or rescheduling. In accordance with the Consumer Protection Act, reasonable cancellation fees may apply to late cancellations or no-shows. Please contact us by phone or via our online booking page to make any changes.</div></div></div>
-    <div><button class="faq" aria-expanded="false"><span>Do you take a deposit?</span><span class="ic" aria-hidden="true">+</span></button><div class="ans"><div>Yes, a deposit is required to secure your appointment and will be deducted from your final bill. As per the Consumer Protection Act, deposits for cancellations made with sufficient notice (at least 24 hours) are refundable or transferable to a new booking.</div></div></div>
-    <div><button class="faq" aria-expanded="false"><span>Which products do you use?</span><span class="ic" aria-hidden="true">+</span></button><div class="ans"><div>We use only professional, high-quality products that comply with South African health and safety standards. All tools are sterilized in line with municipal health regulations. If you have any allergies or sensitivities, please inform us in advance so we can accommodate you safely.</div></div></div>
+    <div><button class="faq liquid liquid--blur" aria-expanded="false"><span>How do I cancel or reschedule?</span><span class="ic" aria-hidden="true">+</span></button><div class="ans"><div>We kindly request at least 24 hours' notice for cancellations or rescheduling. In accordance with the Consumer Protection Act, reasonable cancellation fees may apply to late cancellations or no-shows. Please contact us by phone or via our online booking page to make any changes.</div></div></div>
+    <div><button class="faq liquid liquid--blur" aria-expanded="false"><span>Do you take a deposit?</span><span class="ic" aria-hidden="true">+</span></button><div class="ans"><div>Yes, a deposit is required to secure your appointment and will be deducted from your final bill. As per the Consumer Protection Act, deposits for cancellations made with sufficient notice (at least 24 hours) are refundable or transferable to a new booking.</div></div></div>
+    <div><button class="faq liquid liquid--blur" aria-expanded="false"><span>Which products do you use?</span><span class="ic" aria-hidden="true">+</span></button><div class="ans"><div>We use only professional, high-quality products that comply with South African health and safety standards. All tools are sterilized in line with municipal health regulations. If you have any allergies or sensitivities, please inform us in advance so we can accommodate you safely.</div></div></div>
   </div>
 </div></section>
 
 <!-- CONTACT -->
-<section id="contact" class="s contact"><div class="wrap">
+<section id="contact" class="s contact rv"><div class="wrap">
   <div class="info">
     <h2 class="h2">Visit us</h2>
     <p>Mankweng Stand 401, Unit E, Polokwane 0727</p>
@@ -403,7 +509,7 @@ body.mlock{overflow:hidden}
 
 <!-- FLOATING BUTTONS -->
 <button class="top" id="toTop" aria-label="Back to top"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
-<a class="wa" id="waFloat" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/></svg></a>
+<a class="wa" id="waFloat" href="#" aria-label="Chat on WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/></svg></a>
 
 <script>
 var WHATSAPP = "27710648238";
@@ -450,6 +556,28 @@ var MAINTENANCE_MODE = false;
   var d = new Date(), pad = function (x) { return (x < 10 ? '0' : '') + x; };
   var today = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
   $('#f-date').min = today;
+
+  /* Salon hours: Mon–Fri 09:00–17:00 · Sat 09:00–15:00 · Sun closed */
+  function openingHours(dateStr) {
+    var day = new Date(dateStr + 'T00:00:00').getDay(); /* 0 = Sunday */
+    if (day === 0) return null;                                   /* closed */
+    if (day === 6) return { open: '09:00', close: '15:00' };      /* Saturday */
+    return { open: '09:00', close: '17:00' };                     /* Mon–Fri */
+  }
+  var fDate = $('#f-date'), fTime = $('#f-time');
+  function syncTimeLimits() {
+    fTime.min = ''; fTime.max = '';
+    if (!fDate.value) return;
+    var hrs = openingHours(fDate.value);
+    if (!hrs) return; /* Sunday — submit validation explains */
+    fTime.min = hrs.open;
+    fTime.max = hrs.close;
+    if (fDate.value === today) { /* same-day: no booking into the past */
+      var now = pad(d.getHours()) + ':' + pad(d.getMinutes());
+      if (now > fTime.min) fTime.min = now;
+    }
+  }
+  fDate.addEventListener('change', syncTimeLimits);
   var v = function (id) { return $('#f-' + id).value.trim(); };
 
   function waLink() {
@@ -470,7 +598,13 @@ var MAINTENANCE_MODE = false;
       setErr('phone', /^\+?[\d\s-]{9,}$/.test(v('phone')) ? '' : 'Enter a valid phone number.'),
       setErr('email', !v('email') || /^\S+@\S+\.\S+$/.test(v('email')) ? '' : 'Enter a valid email.'),
       setErr('service', v('service') ? '' : 'Choose a service.'),
-      setErr('date', !v('date') ? 'Pick a date.' : (v('date') < today ? 'Date cannot be in the past.' : ''))
+      setErr('date', !v('date') ? 'Pick a date.' : (v('date') < today ? 'Date cannot be in the past.' : (openingHours(v('date')) ? '' : "We're closed on Sundays — please choose another day."))),
+      setErr('time', (function () {
+        var hrs = openingHours(v('date'));
+        if (!hrs) return '';
+        var t = v('time');
+        return (!t || (t >= hrs.open && t <= hrs.close)) ? '' : 'On that day our hours are ' + hrs.open + ' to ' + hrs.close + ' — please pick a time in that range.';
+      })())
     ];
     if (ok.indexOf(false) > -1) { var first = $('.bad'); if (first) first.focus(); return; }
 
